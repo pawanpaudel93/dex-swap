@@ -159,6 +159,7 @@ async function swap(
 
 async function main() {
   // impersonate account and fetch signer for the account
+  console.log("Impersonating account: " + fromAddress);
   await impersonateAccount(fromAddress);
   const signer = await hre.ethers.getSigner(fromAddress);
 
@@ -177,6 +178,7 @@ async function main() {
   );
 
   // Getting quote
+  console.log("Getting quote...");
   const quote = await getQuote(
     onesplitContract,
     fromToken,
@@ -185,9 +187,11 @@ async function main() {
   );
 
   // approve oneSplit contract to spend DAI
+  console.log("Approving token...");
   await approveToken(daiToken, onesplitAddress, amountWithDecimals, signer);
 
   // swap
+  console.log("Swapping...");
   await swap(onesplitContract, daiToken, amountWithDecimals, quote, signer);
 }
 

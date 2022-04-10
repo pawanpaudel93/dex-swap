@@ -13,8 +13,10 @@ const config: HardhatUserConfig = {
   solidity: "0.8.4",
   defaultNetwork: "hardhat",
   networks: {
-    localhost: {
-      chainId: 31337,
+    hardhat: {
+      forking: {
+        url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
+      },
     },
   },
 };
