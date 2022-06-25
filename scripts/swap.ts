@@ -8,7 +8,7 @@ const erc20ABI = JSON.parse(fs.readFileSync("./abis/erc20.json", "utf8"));
 const daiAddress = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
 const onesplitAddress = "0xC586BeF4a0992C495Cf22e1aeEE4E446CECDee0E"; // 1plit contract address on Main net
 
-const fromAddress = "0x022605988f8e9f742fb1a75432f18407c6baddc6"; // Your wallet address
+const fromAddress = "0x5d38b4e4783e34e2301a2a36c39a03c45798c4dd"; // Your wallet address
 
 const fromToken = daiAddress;
 const fromTokenDecimals = 18;
@@ -72,7 +72,7 @@ async function getQuote(
     console.log("Trade Amount: " + amountToExchange);
     console.log(
       "Trade Expected Return: " +
-        hre.ethers.utils.formatEther(quote.returnAmount)
+      hre.ethers.utils.formatEther(quote.returnAmount)
     );
     console.log("Using Dexes:");
     for (let index = 0; index < quote.distribution.length; index++) {
@@ -108,7 +108,7 @@ async function impersonateAccount(address: string) {
   // impersonating a address with large DAI balance
   await hre.network.provider.request({
     method: "hardhat_impersonateAccount",
-    params: [fromAddress],
+    params: [address],
   });
 }
 
